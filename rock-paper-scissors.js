@@ -48,25 +48,28 @@ function game() {
     // play 5 rounds
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("Pick Rock, Paper, or  Scissors!").toLowerCase();
-        let computerSelection = computerPlay().toLowerCase;
+        let computerSelection = computerPlay().toLowerCase();
         let result = playRound(playerSelection, computerSelection);
         // Log winner message
         console.log(result[1]);
         //Update Score
-        if (result[1] === "p") {
+        if (result[0] === "p") {
             score[0] += 1; 
         }
-        else if (result[1] === "c") {
+        else if (result[0] === "c") {
             score[1] += 1;
         }
         //Log Score
         console.log("Score: Player: " + score[0].toString() + " Computer: " + score[1].toString());
     }
     if (score[0] > score[1]) {
-        console.log("You Win! Score " + score[0].toString() + " - " + score[1].toString());
+        console.log("Game over! You Win! Score " + score[0].toString() + " - " + score[1].toString());
+    }
+    else if (score[0] === score[1]) {
+        console.log("Game over! Its a tie! Score " + score[0].toString() + " - " + score[1].toString());
     }
     else {
-        console.log("You Lose! Score " + score[0].toString() + " - " + score[1].toString());
+        console.log("Game over! You Lose! Score " + score[0].toString() + " - " + score[1].toString());
     }
 }
 
