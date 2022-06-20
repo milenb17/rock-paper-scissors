@@ -45,32 +45,47 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     let score = [0,0];
+    let result;
+    const buttons = document.querySelectorAll("button");
+    const winner = document.querySelector(".winner");
+    const scoreDisplay = document.querySelector(".score");
+    const heading = document.querySelector("h3");
     // play 5 rounds
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Pick Rock, Paper, or  Scissors!").toLowerCase();
-        let computerSelection = computerPlay().toLowerCase();
-        let result = playRound(playerSelection, computerSelection);
-        // Log winner message
-        console.log(result[1]);
-        //Update Score
-        if (result[0] === "p") {
-            score[0] += 1; 
-        }
-        else if (result[0] === "c") {
-            score[1] += 1;
-        }
-        //Log Score
-        console.log("Score: Player: " + score[0].toString() + " Computer: " + score[1].toString());
-    }
-    if (score[0] > score[1]) {
-        console.log("Game over! You Win! Score " + score[0].toString() + " - " + score[1].toString());
-    }
-    else if (score[0] === score[1]) {
-        console.log("Game over! Its a tie! Score " + score[0].toString() + " - " + score[1].toString());
-    }
-    else {
-        console.log("Game over! You Lose! Score " + score[0].toString() + " - " + score[1].toString());
-    }
+        buttons.forEach(button => button.addEventListener('click',function(e) {
+            result = playRound(e.target.id, computerPlay().toLowerCase())
+            // Log winner message
+            console.log(result[1]);
+            winner.textContent = result[1];
+            //Update Score
+            if (result[0] === "p") {
+                score[0] += 1; 
+            }
+            else if (result[0] === "c") {
+                score[1] += 1;
+            }
+            //Log Score
+            scoreDisplay.textContent = "Score: Player: " + score[0].toString() + ", Computer: " + score[1].toString()
+            console.log("Score: Player: " + score[0].toString() + " Computer: " + score[1].toString());
+            
+            if (score[0] >= 5 || score[1] >=5) {
+                if (score[0] > score[1]) {
+                    heading.textContent = "Game over! You Win! Score " + score[0].toString() + " - " + score[1].toString();
+                    console.log("Game over! You Win! Score " + score[0].toString() + " - " + score[1].toString());
+                    return ;
+                }
+                else if (score[0] === score[1]) {
+                    console.log("Game over! Its a tie! Score " + score[0].toString() + " - " + score[1].toString());
+                    heading.textContent = "Game over! Its a tie! Score " + score[0].toString() + " - " + score[1].toString();
+                    return ;
+                }
+                else {
+                    heading.textContent = "Game over! You Lose! Score " + score[0].toString() + " - " + score[1].toString()
+                    console.log("Game over! You Lose! Score " + score[0].toString() + " - " + score[1].toString());
+                    return ;
+                }
+            } 
+        } ))
 }
 
+game();
 
