@@ -69,17 +69,17 @@ function game() {
             
             if (score[0] >= 5 || score[1] >=5) {
                 if (score[0] > score[1]) {
-                    heading.textContent = "Game over! You Win! Score " + score[0].toString() + " - " + score[1].toString();
+                    heading.textContent = "Game over! You Win! Score " + score[0].toString() + " - " + score[1].toString() + " Reload the page to play again.";
                     console.log("Game over! You Win! Score " + score[0].toString() + " - " + score[1].toString());
                     return ;
                 }
                 else if (score[0] === score[1]) {
-                    console.log("Game over! Its a tie! Score " + score[0].toString() + " - " + score[1].toString());
-                    heading.textContent = "Game over! Its a tie! Score " + score[0].toString() + " - " + score[1].toString();
+                    console.log("Game over! Its a tie! Score " + score[0].toString() + " - " + score[1].toString()) ;
+                    heading.textContent = "Game over! Its a tie! Score " + score[0].toString() + " - " + score[1].toString() + " Reload the page to play again.";
                     return ;
                 }
                 else {
-                    heading.textContent = "Game over! You Lose! Score " + score[0].toString() + " - " + score[1].toString()
+                    heading.textContent = "Game over! You Lose! Score " + score[0].toString() + " - " + score[1].toString() + " Reload the page to play again."
                     console.log("Game over! You Lose! Score " + score[0].toString() + " - " + score[1].toString());
                     return ;
                 }
